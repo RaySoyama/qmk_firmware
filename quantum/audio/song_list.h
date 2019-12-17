@@ -110,6 +110,18 @@
 
 #define TERMINAL_SOUND E__NOTE(_C5)
 
+
+
+//Rays Songs
+
+
+#define GIT_Song_ADD E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), S__NOTE(_REST), ED_NOTE(_A7),
+#define GIT_Song_COMMIT E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), S__NOTE(_REST), ED_NOTE(_B7),
+#define GIT_Song_PUSH E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), S__NOTE(_REST), ED_NOTE(_C8),
+
+
+
+
 /* Title:            La Campanella
  * Author/Composer:  Frank Lizst
  + License:          Public Domain

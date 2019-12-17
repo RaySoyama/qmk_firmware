@@ -153,7 +153,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef AUDIO_ENABLE
   float plover_song[][2]     = SONG(PLOVER_SOUND);
   float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
-  float test_song[][2]  = SONG(FANTASIE_IMPROMPTU);
+
+ 
+  float git_add_song[][2]  = SONG(GIT_Song_ADD);
+  float git_commit_song[][2]  = SONG(GIT_Song_COMMIT);
+  float git_push_song[][2]  = SONG(GIT_Song_PUSH);
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -246,7 +250,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                 SEND_STRING("git add .");
                 #ifdef AUDIO_ENABLE
                 stop_all_notes();
-                PLAY_SONG(plover_song);
+                PLAY_SONG(git_add_song);
                 #endif
             }
             return false;
@@ -256,7 +260,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             {
                 #ifdef AUDIO_ENABLE
                 stop_all_notes();
-                PLAY_SONG(test_song);
+                PLAY_SONG(git_commit_song);
                 #endif
                 SEND_STRING("git commit -m \" \" ");
             }
@@ -267,7 +271,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             {
                 #ifdef AUDIO_ENABLE
                 stop_all_notes();
-                PLAY_SONG(plover_gb_song);
+                PLAY_SONG(git_push_song);
                 #endif
 
                 SEND_STRING("git push");
