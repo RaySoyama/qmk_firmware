@@ -32,6 +32,8 @@ Removed ISO shit from raise
 Removed Megalo
 Added  Git Macros
 */
+
+
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
@@ -151,6 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef AUDIO_ENABLE
   float plover_song[][2]     = SONG(PLOVER_SOUND);
   float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
+  float test_song[][2]  = SONG(FANTASIE_IMPROMPTU);
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -241,12 +244,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
             if (record->event.pressed)
             {
                 SEND_STRING("git add .");
+                #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(plover_song);
+                #endif
             }
             return false;
             break;
         case GitCommit:
             if (record->event.pressed)
             {
+                #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(test_song);
+                #endif
                 SEND_STRING("git commit -m \" \" ");
             }
             return false;
@@ -254,6 +265,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
         case GitPush:
             if (record->event.pressed)
             {
+                #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(plover_gb_song);
+                #endif
+
                 SEND_STRING("git push");
             }
             return false;
