@@ -243,7 +243,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                 stop_all_notes();
                 PLAY_SONG(git_commit_song);
                 #endif
-                SEND_STRING("git commit -m \" \" ");
+                SEND_STRING("git commit -m \"\""SS_TAP(X_LEFT));
             }
             return false;
             break;
