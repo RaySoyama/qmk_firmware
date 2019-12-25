@@ -50,7 +50,13 @@ enum planck_keycodes {
   QWERTY = SAFE_RANGE,
   GitAdd,
   GitCommit,
-  GitPush
+  GitPush,
+  SongStop,
+  SongOne,
+  SongTwo,
+  SongThree,
+  SongFour,
+  SongFive,
 };
 
 #define LOWER MO(_LOWER)
@@ -117,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |Enter |
+ * |song 1|song 2|song 3|song 4|song 5| STOP |      |      |      |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |GitAdd|GitCmt|GitPus|      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -125,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_planck_grid(
     _______, RESET,   DEBUG,   _______, _______, _______, _______, _______, _______, _______, _______, KC_PAUSE,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_ENT,
+    SongOne, SongTwo, SongThree, SongFour, SongFive, SongStop, _______, _______, _______, _______, _______, KC_ENT,
     GitAdd,  GitCommit, GitPush, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
 
@@ -139,6 +145,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   float git_add_song[][2]  = SONG(GIT_Song_ADD);
   float git_commit_song[][2]  = SONG(GIT_Song_COMMIT);
   float git_push_song[][2]  = SONG(GIT_Song_PUSH);
+
+  float song_one[][2] = SONG(PLATINUM_DISCO); 
+  float song_two[][2] = SONG(RENAI_CIRCULATION);
+  float song_three[][2] = SONG(ISABELLAS_LULLABY);
+  float song_four[][2] = SONG(CELESTE_FIRSTSTEPS);
+  float song_five[][2] = SONG(CELESTE_FIRSTSTEPS);
+    
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -225,40 +238,101 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
 {
     switch (keycode)
     {
-        case GitAdd:
-            if (record->event.pressed)
-            {
-                #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(git_add_song);
-                #endif
-                SEND_STRING("git add .\n");
-            }
-            return false;
-            break;
-        case GitCommit:
-            if (record->event.pressed)
-            {
-                #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(git_commit_song);
-                #endif
-                SEND_STRING("git commit -m \"\""SS_TAP(X_LEFT));
-            }
-            return false;
-            break;
-        case GitPush:
-            if (record->event.pressed)
-            {
-                #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(git_push_song);
-                #endif
+    case GitAdd:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(git_add_song);
+#endif
+            SEND_STRING("git add .\n");
+        }
+        return false;
+        break;
+    case GitCommit:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(git_commit_song);
+#endif
+            SEND_STRING("git commit -m \"\""SS_TAP(X_LEFT));
+        }
+        return false;
+        break;
+    case GitPush:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(git_push_song);
+#endif
 
-                SEND_STRING("git push\n");
-            }
-            return false;
-            break;
+            SEND_STRING("git push\n");
+        }
+        return false;
+        break;
+
+        //SONGS
+    case SongStop:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+#endif
+        }
+        return false;
+        break;
+    case SongOne:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(song_one);
+#endif
+        }
+        return false;
+        break;
+    case SongTwo:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(song_two);
+#endif
+        }
+        return false;
+        break;
+    case SongThree:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(song_three);
+#endif
+        }
+        return false;
+        break;
+    case SongFour:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(song_four);
+#endif
+        }
+        return false;
+        break;
+    case SongFive:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(song_five);
+#endif
+        }
+        return false;
+        break;
     }
 
     return true;
