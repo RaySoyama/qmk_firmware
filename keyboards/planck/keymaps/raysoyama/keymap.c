@@ -228,11 +228,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
         case GitAdd:
             if (record->event.pressed)
             {
-                SEND_STRING("git add .");
                 #ifdef AUDIO_ENABLE
                 stop_all_notes();
                 PLAY_SONG(git_add_song);
                 #endif
+                SEND_STRING("git add .\n");
             }
             return false;
             break;
@@ -255,7 +255,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
                 PLAY_SONG(git_push_song);
                 #endif
 
-                SEND_STRING("git push");
+                SEND_STRING("git push\n");
             }
             return false;
             break;
