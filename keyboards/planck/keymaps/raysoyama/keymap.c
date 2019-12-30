@@ -51,6 +51,10 @@ enum planck_keycodes {
   GitAdd,
   GitCommit,
   GitPush,
+
+  GeForce,
+  Record,
+
   SongStop,
   SongOne,
   SongTwo,
@@ -119,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |      | Reset|Debug |      |      |      |      |      |      |      |      |Discrd|
+ * |RESET |      |      |GeForc|Record|      |      |      |      |      |      |Discrd|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -129,10 +133,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    _______, RESET,   DEBUG,   _______, _______, _______, _______, _______, _______, _______, _______, KC_PAUSE,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    SongOne, SongTwo, SongThree, SongFour, SongFive, SongStop, _______, _______, _______, _______, _______, KC_ENT,
-    GitAdd,  GitCommit, GitPush, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    RESET   , _______   , _______   , GeForce   , Record    , _______   , _______, _______, _______, _______, _______, KC_PAUSE,
+    _______ , _______   , _______   , _______   , _______   , _______   , _______, _______, _______, _______, _______, _______,
+    SongOne , SongTwo   , SongThree , SongFour  , SongFive  , SongStop  , _______, _______, _______, _______, _______, KC_ENT,
+    GitAdd  , GitCommit , GitPush   , _______   , _______   , _______   , _______, _______, _______, _______, _______, _______
 )
 
 };
@@ -269,6 +273,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
 #endif
 
             SEND_STRING("git push\n");
+        }
+        return false;
+        break;
+
+
+
+    case GeForce:
+        if (record->event.pressed)
+        {
+            SEND_STRING(SS_LCTRL(SS_LALT("a")));
+        }
+        return false;
+        break;
+
+    case Record:
+        if (record->event.pressed)
+        {
+            SEND_STRING(SS_LCTRL(SS_LALT("b")));
         }
         return false;
         break;
