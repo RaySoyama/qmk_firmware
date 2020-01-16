@@ -21,33 +21,60 @@
 enum layer_names { _BASE, _FN, _DEMO };
 
 // Defines the keycodes used by our macros in process_record_user
-enum custom_keycodes { QMKBEST = SAFE_RANGE, QMKURL };
+enum custom_keycodes {
+    QMKBEST = SAFE_RANGE,
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    /* Base */
-    [_BASE] = LAYOUT(TO(_FN), KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_0),
-    [_FN]   = LAYOUT(TO(_DEMO), RGB_TOG, RGB_MOD, RGB_VAI, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-    [_DEMO] = LAYOUT(TO(_BASE), QMKBEST, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QMKURL)};
+    GeForce,
+    Record,
+    ToggleChannel,
+};
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
+    {
+        [_BASE] = LAYOUT(
+            KC_PAUSE,
+            GeForce, Record, KC_CAPSLOCK,
+            KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, ToggleChannel)
+    };
+
+bool channelToggle = true;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case QMKBEST:
-            if (record->event.pressed) {
-                // when keycode QMKBEST is pressed
-                SEND_STRING("QMK is the best thing ever!");
-            } else {
-                // when keycode QMKBEST is released
+    switch (keycode)
+    {
+    case GeForce:
+        if (record->event.pressed)
+        {
+            SEND_STRING(SS_LCTRL(SS_LALT("a")));
+        }
+        return false;
+        break;
+
+    case Record:
+        if (record->event.pressed)
+        {
+            SEND_STRING(SS_LCTRL(SS_LALT("b")));
+        }
+        return false;
+        break;
+
+    case ToggleChannel:
+        if (record->event.pressed)
+        {
+            if (channelToggle == true)
+            {
+                channelToggle = false;
             }
-            break;
-        case QMKURL:
-            if (record->event.pressed) {
-                // when keycode QMKURL is pressed
-                SEND_STRING("https://qmk.fm/\n");
-            } else {
-                // when keycode QMKURL is released
+            else
+            {
+                channelToggle = true;
             }
-            break;
+        }
+        return false;
+        break;
+
     }
+
     return true;
 }
 
@@ -57,22 +84,33 @@ void matrix_init_user(void) {
 }
 
 uint8_t divisor           = 0;
-bool channelToggle = true;
 
 void    slider(void) {
     if (divisor++) { // only run the slider function 1/256 times it's called
         return;
     }
 
+    uint8_t sliderValue = 0x7F - (analogReadPin(SLIDER_PIN) >> 3);
+
+    if (sliderValue < 10)
+    {
+        sliderValue = 0;
+    }
+    else if (sliderValue > 124)
+    {
+        sliderValue = 127;
+    }
+
+
     if (channelToggle == true)
     {
-        midi_send_cc(&midi_device, 2, 0x3E, analogReadPin(SLIDER_PIN) >> 3);
+        midi_send_cc(&midi_device, 2, 0x3E, sliderValue);
     }
     else
     {
-        midi_send_cc(&midi_device, 3, 0x3E, analogReadPin(SLIDER_PIN) >> 3);
+        midi_send_cc(&midi_device, 3, 0x3E, sliderValue);
     }
-}
+}   
 
 void matrix_scan_user(void) { slider(); }
 
