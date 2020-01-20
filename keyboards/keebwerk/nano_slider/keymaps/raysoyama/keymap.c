@@ -16,6 +16,7 @@
 #include QMK_KEYBOARD_H
 #include "analog.h"
 #include "qmk_midi.h"
+#include "rgblight.h"
 
 // Defines names for use in layer keycodes and the keymap
 enum layer_names { _BASE, _FN, _DEMO };
@@ -33,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     {
         [_BASE] = LAYOUT(
             KC_PAUSE,
-            GeForce, Record, KC_CAPSLOCK,
+            GeForce, Record, KC_PSCREEN ,
             KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, ToggleChannel)
     };
 
@@ -85,7 +86,7 @@ void matrix_init_user(void) {
 
 uint8_t divisor           = 0;
 
-void    slider(void) {
+void slider(void) {
     if (divisor++) { // only run the slider function 1/256 times it's called
         return;
     }
@@ -105,10 +106,23 @@ void    slider(void) {
     if (channelToggle == true)
     {
         midi_send_cc(&midi_device, 2, 0x3E, sliderValue);
+
+        sethsv(HSV_BLUE, (LED_TYPE*)&led[0]);
+        sethsv(HSV_BLUE, (LED_TYPE*)&led[1]);
+        sethsv(HSV_BLUE, (LED_TYPE*)&led[2]);
+        sethsv(HSV_BLUE, (LED_TYPE*)&led[3]);
+        rgblight_set();
+
     }
     else
     {
         midi_send_cc(&midi_device, 3, 0x3E, sliderValue);
+
+        sethsv(HSV_RED, (LED_TYPE*)&led[0]);
+        sethsv(HSV_RED, (LED_TYPE*)&led[1]);
+        sethsv(HSV_RED, (LED_TYPE*)&led[2]);
+        sethsv(HSV_RED, (LED_TYPE*)&led[3]);
+        rgblight_set();
     }
 }   
 
