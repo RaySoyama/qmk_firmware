@@ -65,10 +65,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (channelToggle == true)
             {
                 channelToggle = false;
+                rgblight_sethsv_noeeprom(HSV_RED);
             }
             else
             {
                 channelToggle = true;
+
+                rgblight_sethsv_noeeprom(HSV_BLUE);
             }
         }
         return false;
@@ -106,26 +109,19 @@ void slider(void) {
     if (channelToggle == true)
     {
         midi_send_cc(&midi_device, 2, 0x3E, sliderValue);
-
-        sethsv(HSV_BLUE, (LED_TYPE*)&led[0]);
-        sethsv(HSV_BLUE, (LED_TYPE*)&led[1]);
-        sethsv(HSV_BLUE, (LED_TYPE*)&led[2]);
-        sethsv(HSV_BLUE, (LED_TYPE*)&led[3]);
-        rgblight_set();
-
     }
     else
     {
         midi_send_cc(&midi_device, 3, 0x3E, sliderValue);
-
-        sethsv(HSV_RED, (LED_TYPE*)&led[0]);
-        sethsv(HSV_RED, (LED_TYPE*)&led[1]);
-        sethsv(HSV_RED, (LED_TYPE*)&led[2]);
-        sethsv(HSV_RED, (LED_TYPE*)&led[3]);
-        rgblight_set();
     }
 }   
 
 void matrix_scan_user(void) { slider(); }
 
 bool led_update_user(led_t led_state) { return true; }
+
+void keyboard_post_init_user(void) {
+    // Call the post init code.
+    rgblight_enable_noeeprom(); // enables Rgb, without saving settings
+    rgblight_sethsv_noeeprom(HSV_BLUE); // sets the color to teal/cyan without saving
+}
