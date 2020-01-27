@@ -25,6 +25,7 @@ enum layer_names { _BASE, _FN, _DEMO };
 enum custom_keycodes {
     QMKBEST = SAFE_RANGE,
 
+    PowerMute,
     GeForce,
     Record,
     ToggleChannel,
@@ -33,16 +34,33 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
     {
         [_BASE] = LAYOUT(
-            KC_PAUSE,
+            PowerMute,
             GeForce, Record, KC_PSCREEN ,
             KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, ToggleChannel)
     };
 
+
 bool channelToggle = true;
+bool resetToggle = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode)
     {
+    case PowerMute:
+        if (record->event.pressed)
+        {
+            if (resetToggle == true)
+            {
+                reset_keyboard();   
+            }
+            else
+            {
+                SEND_STRING(SS_LCTRL(SS_LALT(SS_TAP(X_PAUSE))));
+            }
+        }
+        return false;
+        break;
+
     case GeForce:
         if (record->event.pressed)
         {
@@ -62,6 +80,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case ToggleChannel:
         if (record->event.pressed)
         {
+            resetToggle = true;
+
             if (channelToggle == true)
             {
                 channelToggle = false;
@@ -73,6 +93,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
                 rgblight_sethsv_noeeprom(HSV_BLUE);
             }
+        }
+        else
+        {
+            resetToggle = false;
         }
         return false;
         break;
