@@ -198,13 +198,11 @@ void encoder_update_user(uint8_t index, bool clockwise) {
   if (index == 0) { /* First encoder */
     if (clockwise)
     {
-      //SEND_STRING(SS_TAP(X_VOLU));
-      tap_code(KC_AUDIO_VOL_UP);
+      tap_code(KC_VOLD);
     }
     else
     {
-      //SEND_STRING(SS_TAP(X_VOLD));
-      tap_code(KC_AUDIO_VOL_DOWN);
+      tap_code(KC_VOLU);
     }
   }
 }

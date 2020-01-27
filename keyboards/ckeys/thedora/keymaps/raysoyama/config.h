@@ -1,4 +1,5 @@
 #pragma once
 
 // Add overrides here
-#define NO_MUSIC_MODE
+#undef AUDIO_CLICKY
+#define TAP_CODE_DELAY 10
