@@ -9,52 +9,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     //           ┌─────────┬─────────┬─────────┬─────────┬─────────┐
     //           │         │         │         │         │         │
-    //           │         │    0    │         │         │  Bspace │
+    //           │    7    │    8    │    9    │         │  Bspace │
     //  ROTORY   │         │         │         │         │         │
     //  RIGHT:   ├─────────┼─────────┼─────────┼─────────┼─────────┤
     //  VOL UP   │         │         │         │         │         │
-    //           │    7    │    8    │    9    │         │         │
+    //           │    4    │    5    │    6    │         │         │
     //  ROTORY   │         │         │         │         │         │
     //  LEFT:    ├─────────┼─────────┼─────────┼─────────┼─────────┤
     //  VOL DOWN │         │         │         │         │         │
-    //           │    6    │    5    │    4    │         │         │
+    //           │    1    │    2    │    3    │   UP    │   Func  │
     //           │         │         │         │         │         │
     // ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
     // │         │         │         │         │         │         │
-    // │         │    1    │    2    │    3    │   Func  │  Shift  │
+    // │  Pause  │  Shift  │    0    │  Left   │   Down  │  Right  │
     // │         │         │         │         │         │         │
     // └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
 
       [_BASE] = LAYOUT(
-        KC_NO, KC_0,   KC_9, KC_NO, KC_BSPACE,  KC_MEDIA_PLAY_PAUSE,
-        KC_7,  KC_8,   KC_9, KC_NO, KC_NO,
-        KC_4,  KC_5,   KC_6, KC_NO, KC_NO,
-        KC_1,  KC_2,   KC_3, MO(_FUNCTION),     KC_RSHIFT
+        KC_7,       KC_8,   KC_9,      KC_NO,   KC_BSPACE,  KC_MEDIA_PLAY_PAUSE,
+        KC_4,       KC_5,   KC_6,      KC_NO,   KC_NO,
+        KC_1,       KC_2,   KC_3,      KC_UP,   MO(_FUNCTION),
+        KC_RSHIFT,  KC_0,   KC_LEFT,   KC_DOWN, KC_RIGHT
       ),
 
     //           ┌─────────┬─────────┬─────────┬─────────┬─────────┐
     //           │         │         │         │         │         │
-    //           │  ResetE │   F10   │         │         │         │
+    //           │    F7   │    F8   │    F9   │         │  Bspace │
     //  ROTORY   │         │         │         │         │         │
     //  RIGHT:   ├─────────┼─────────┼─────────┼─────────┼─────────┤
     //  VOL UP   │         │         │         │         │         │
-    //           │   F7    │   F8    │    F9   │         │         │
+    //           │   F4    │   F5    │    F6   │         │         │
     //  ROTORY   │         │         │         │         │         │
     //  LEFT:    ├─────────┼─────────┼─────────┼─────────┼─────────┤
     //  VOL DOWN │         │         │         │         │         │
-    //           │   F6    │   F5    │   F4    │    -    │         │
+    //           │   F1    │   F2    │   F3    │  Right  │         │
     //           │         │         │         │         │         │
     // ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
     // │         │         │         │         │         │         │
-    // │         │   F1    │    F2   │   F3    │   Func  │   Symb  │
+    // │  Reset  │  EReset │   F10   │   Left  │   Down  │  Right  │
     // │         │         │         │         │         │         │
     // └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
 
       [_FUNCTION] = LAYOUT(
-        EEPROM_RESET,  KC_F10,  KC_F9, KC_NO, KC_BSPACE,  RESET,
-        KC_F7,  KC_F8,   KC_F9, KC_NO, KC_NO,
-        KC_F4,  KC_F5,   KC_F6, KC_NO, KC_NO,
-        KC_F1,  KC_F2,   KC_F3, KC_NO, KC_RSHIFT
+        KC_F7,          KC_F8,  KC_F9,      KC_NO,      KC_BSPACE,      RESET,
+        KC_F4,          KC_F5,  KC_F6,      KC_NO,      KC_NO,
+        KC_F1,          KC_F2,  KC_F3,      KC_UP,      MO(_FUNCTION),
+        EEPROM_RESET,   KC_F10, KC_LEFT,    KC_DOWN,    KC_RIGHT
       ),
 
 
@@ -196,10 +196,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void encoder_update_user(uint8_t index, bool clockwise) {
   if (index == 0) { /* First encoder */
-    if (clockwise) {
-      tap_code(KC_VOLU);
-    } else {
-      tap_code(KC_VOLD);
+    if (clockwise)
+    {
+      //SEND_STRING(SS_TAP(X_VOLU));
+      tap_code(KC_AUDIO_VOL_UP);
+    }
+    else
+    {
+      //SEND_STRING(SS_TAP(X_VOLD));
+      tap_code(KC_AUDIO_VOL_DOWN);
     }
   }
 }
