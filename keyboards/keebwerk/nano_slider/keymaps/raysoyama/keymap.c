@@ -111,7 +111,7 @@ void slider(void) {
 
     uint8_t sliderValue = 0x7F - (analogReadPin(SLIDER_PIN) >> 3);
 
-    if (sliderValue < 10) {
+    if (sliderValue < 20) {
         sliderValue = 0;
     } else if (sliderValue > 124) {
         sliderValue = 127;
