@@ -23,84 +23,75 @@ enum layer_names { _BASE, _FN, _DEMO };
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
-    QMKBEST = SAFE_RANGE,
-
     PowerMute,
     GeForce,
     Record,
     ToggleChannel,
+    PrintOneScreen,
 };
+/*
+    PowerMute = Control+Alt+Break
+    GeForce = Control+Alt+A
+    Record = Control+Alt+B
+    ToggleChannel = Switches Slider Midi output from 3 to 4 and back
+    PrintOneScreen = Control+Alt+Print
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
-    {
-        [_BASE] = LAYOUT(
-            PowerMute,
-            GeForce, Record, KC_PSCREEN ,
-            KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, ToggleChannel)
-    };
-
+*/
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[_BASE] = LAYOUT(PowerMute, GeForce, Record, PrintOneScreen, KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, ToggleChannel)};
 
 bool channelToggle = true;
-bool resetToggle = false;
+bool resetToggle   = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode)
-    {
-    case PowerMute:
-        if (record->event.pressed)
-        {
-            if (resetToggle == true)
-            {
-                reset_keyboard();   
+    switch (keycode) {
+        case PowerMute:
+            if (record->event.pressed) {
+                if (resetToggle == true) {
+                    reset_keyboard();
+                } else {
+                    SEND_STRING(SS_LCTRL(SS_LALT(SS_TAP(X_PAUSE))));
+                }
             }
-            else
-            {
-                SEND_STRING(SS_LCTRL(SS_LALT(SS_TAP(X_PAUSE))));
+            return false;
+            break;
+
+        case GeForce:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTRL(SS_LALT("a")));
             }
-        }
-        return false;
-        break;
+            return false;
+            break;
 
-    case GeForce:
-        if (record->event.pressed)
-        {
-            SEND_STRING(SS_LCTRL(SS_LALT("a")));
-        }
-        return false;
-        break;
-
-    case Record:
-        if (record->event.pressed)
-        {
-            SEND_STRING(SS_LCTRL(SS_LALT("b")));
-        }
-        return false;
-        break;
-
-    case ToggleChannel:
-        if (record->event.pressed)
-        {
-            resetToggle = true;
-
-            if (channelToggle == true)
-            {
-                channelToggle = false;
-                rgblight_sethsv_noeeprom(HSV_RED);
+        case Record:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTRL(SS_LALT("b")));
             }
-            else
-            {
-                channelToggle = true;
+            return false;
+            break;
 
-                rgblight_sethsv_noeeprom(HSV_BLUE);
+        case ToggleChannel:
+            if (record->event.pressed) {
+                resetToggle = true;
+
+                if (channelToggle == true) {
+                    channelToggle = false;
+                    rgblight_sethsv_noeeprom(HSV_RED);
+                } else {
+                    channelToggle = true;
+
+                    rgblight_sethsv_noeeprom(HSV_BLUE);
+                }
+            } else {
+                resetToggle = false;
             }
-        }
-        else
-        {
-            resetToggle = false;
-        }
-        return false;
-        break;
-
+            return false;
+            break;
+        case PrintOneScreen:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LCTRL(SS_LALT(SS_TAP(X_PSCREEN))));
+            }
+            return false;
+            break;
     }
 
     return true;
@@ -111,34 +102,27 @@ void matrix_init_user(void) {
     analogReference(ADC_REF_POWER);
 }
 
-uint8_t divisor           = 0;
+uint8_t divisor = 0;
 
 void slider(void) {
-    if (divisor++) { // only run the slider function 1/256 times it's called
+    if (divisor++) {  // only run the slider function 1/256 times it's called
         return;
     }
 
     uint8_t sliderValue = 0x7F - (analogReadPin(SLIDER_PIN) >> 3);
 
-    if (sliderValue < 10)
-    {
+    if (sliderValue < 10) {
         sliderValue = 0;
-    }
-    else if (sliderValue > 124)
-    {
+    } else if (sliderValue > 124) {
         sliderValue = 127;
     }
 
-
-    if (channelToggle == true)
-    {
+    if (channelToggle == true) {
         midi_send_cc(&midi_device, 2, 0x3E, sliderValue);
-    }
-    else
-    {
+    } else {
         midi_send_cc(&midi_device, 3, 0x3E, sliderValue);
     }
-}   
+}
 
 void matrix_scan_user(void) { slider(); }
 
@@ -146,6 +130,6 @@ bool led_update_user(led_t led_state) { return true; }
 
 void keyboard_post_init_user(void) {
     // Call the post init code.
-    rgblight_enable_noeeprom(); // enables Rgb, without saving settings
-    rgblight_sethsv_noeeprom(HSV_BLUE); // sets the color to teal/cyan without saving
+    rgblight_enable_noeeprom();          // enables Rgb, without saving settings
+    rgblight_sethsv_noeeprom(HSV_BLUE);  // sets the color to teal/cyan without saving
 }
