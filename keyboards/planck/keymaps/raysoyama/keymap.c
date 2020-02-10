@@ -52,6 +52,8 @@ enum planck_keycodes {
   GitCommit,
   GitPush,
 
+  PerforceCommit,
+
   GeForce,
   Record,
 
@@ -129,14 +131,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |song 1|song 2|song 3|song 4|song 5| STOP |      |      |      |      |      |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |GitAdd|GitCmt|GitPus|      |      |             |      |      |      |      |      |
+ * |GitAdd|GitCmt|GitPus|Perfor|      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    RESET   , _______   , _______   , GeForce   , Record    , _______   , _______, _______, _______, _______, _______, KC_PAUSE,
-    _______ , _______   , _______   , _______   , _______   , _______   , _______, _______, _______, _______, _______, _______,
-    SongOne , SongTwo   , SongThree , SongFour  , SongFive  , SongStop  , _______, _______, _______, _______, _______, KC_ENT,
-    GitAdd  , GitCommit , GitPush   , _______   , _______   , _______   , _______, _______, _______, _______, _______, _______
+    RESET   , _______   , _______   , GeForce   ,       Record    , _______   , _______, _______, _______, _______, _______, KC_PAUSE,
+    _______ , _______   , _______   , _______   ,       _______   , _______   , _______, _______, _______, _______, _______, _______,
+    SongOne , SongTwo   , SongThree , SongFour  ,       SongFive  , SongStop  , _______, _______, _______, _______, _______, KC_ENT,
+    GitAdd  , GitCommit , GitPush   , PerforceCommit   , _______   , _______   , _______, _______, _______, _______, _______, _______
 )
 
 };
@@ -273,6 +275,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
 #endif
 
             SEND_STRING("git push\n");
+        }
+        return false;
+        break;
+  
+      case PerforceCommit:
+        if (record->event.pressed)
+        {
+#ifdef AUDIO_ENABLE
+            stop_all_notes();
+            PLAY_SONG(git_push_song);
+#endif
+
+            SEND_STRING("Ray Soyama - ");
         }
         return false;
         break;
