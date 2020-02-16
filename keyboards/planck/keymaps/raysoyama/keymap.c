@@ -54,8 +54,8 @@ enum planck_keycodes {
 
   PerforceCommit,
 
-  GeForce,
-  Record,
+  PastaOne,
+  PastaTwo,
 
   SongStop,
   SongOne,
@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |RESET |      |      |GeForc|Record|      |      |      |      |      |      |Discrd|
+ * |RESET |      |      |      |      |      |      |      |      |      |      |Discrd|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -135,10 +135,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_grid(
-    RESET   , _______   , _______   , GeForce   ,       Record    , _______   , _______, _______, _______, _______, _______, KC_PAUSE,
-    _______ , _______   , _______   , _______   ,       _______   , _______   , _______, _______, _______, _______, _______, _______,
-    SongOne , SongTwo   , SongThree , SongFour  ,       SongFive  , SongStop  , _______, _______, _______, _______, _______, KC_ENT,
-    GitAdd  , GitCommit , GitPush   , PerforceCommit   , _______   , _______   , _______, _______, _______, _______, _______, _______
+    RESET   , _______   , _______   , _______   ,       _______   , _______   , _______, _______, _______,  _______,  _______, KC_PAUSE,
+    _______ , _______   , _______   , _______   ,       _______   , _______   , _______, _______, _______,  _______,  _______, _______,
+    SongOne , SongTwo   , SongThree , SongFour  ,       SongFive  , SongStop  , _______, _______, _______,  _______,  _______, KC_ENT,
+    GitAdd  , GitCommit , GitPush   , PerforceCommit ,  _______   , _______   , _______, _______, PastaOne, PastaTwo, _______, _______
 )
 
 };
@@ -163,82 +163,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
-
-//bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//  switch (keycode) {
-//    case QWERTY:
-//      if (record->event.pressed) {
-//        print("mode just switched to qwerty and this is a huge string\n");
-//        set_single_persistent_default_layer(_QWERTY);
-//      }
-//      return false;
-//      break;
-//    case COLEMAK:
-//      if (record->event.pressed) {
-//        set_single_persistent_default_layer(_COLEMAK);
-//      }
-//      return false;
-//      break;
-//    case DVORAK:
-//      if (record->event.pressed) {
-//        set_single_persistent_default_layer(_DVORAK);
-//      }
-//      return false;
-//      break;
-//    case BACKLIT:
-//      if (record->event.pressed) {
-//        register_code(KC_RSFT);
-//        #ifdef BACKLIGHT_ENABLE
-//          backlight_step();
-//        #endif
-//        #ifdef KEYBOARD_planck_rev5
-//          writePinLow(E6);
-//        #endif
-//      } else {
-//        unregister_code(KC_RSFT);
-//        #ifdef KEYBOARD_planck_rev5
-//          writePinHigh(E6);
-//        #endif
-//      }
-//      return false;
-//      break;
-//    case PLOVER:
-//      if (record->event.pressed) {
-//        #ifdef AUDIO_ENABLE
-//          stop_all_notes();
-//          PLAY_SONG(plover_song);
-//        #endif
-//        layer_off(_RAISE);
-//        layer_off(_LOWER);
-//        layer_off(_ADJUST);
-//        layer_on(_PLOVER);
-//        if (!eeconfig_is_enabled()) {
-//            eeconfig_init();
-//        }
-//        keymap_config.raw = eeconfig_read_keymap();
-//        keymap_config.nkro = 1;
-//        eeconfig_update_keymap(keymap_config.raw);
-//      }
-//      return false;
-//      break;
-//    case EXT_PLV:
-//      if (record->event.pressed) {
-//        #ifdef AUDIO_ENABLE
-//          PLAY_SONG(plover_gb_song);
-//        #endif
-//        layer_off(_PLOVER);
-//      }
-//      return false;
-//    case MEGALO:
-//        if (record->event.pressed) {
-//        #ifdef AUDIO_ENABLE
-//            PLAY_SONG(megalo_song);
-//            #endif
-//        }
-//      break;
-//  }
-//  return true;
-//}
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record)
 {
@@ -291,21 +215,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record)
         }
         return false;
         break;
-
-
-
-    case GeForce:
+        
+    case PastaOne:
         if (record->event.pressed)
         {
-            SEND_STRING(SS_LCTRL(SS_LALT("a")));
+            SEND_STRING("You cheated not only the game, but yourself. You didn't grow. You didn't improve. You took a shortcut and gained nothing. You experienced a hollow victory. Nothing was risked and nothing was gained. It's sad that you don't know the difference.");
         }
         return false;
         break;
-
-    case Record:
+    
+    case PastaTwo:
         if (record->event.pressed)
         {
-            SEND_STRING(SS_LCTRL(SS_LALT("b")));
+            SEND_STRING("What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little \"clever\" comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo.");
         }
         return false;
         break;
