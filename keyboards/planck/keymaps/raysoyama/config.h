@@ -5,8 +5,7 @@
     // #define STARTUP_SONG SONG(NO_SOUND)
 
     #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \
-                                  SONG(ODE_TO_JOY), \
-                                  SONG(DVORAK_SOUND) \
+                                  SONG(COLEMAK_SOUND) \
                                 }
 #endif
 
