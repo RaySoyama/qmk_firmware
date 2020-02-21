@@ -22,7 +22,6 @@
 */
 
 #define MIDI_BASIC
-
 /* enable advanced MIDI features:
    - MIDI notes can be added to the keymap
    - Octave shift and transpose
@@ -37,3 +36,6 @@
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
 
+//#define RGB_DI_PIN A1
+//#define RGBLED_NUM  9
+//#define RGBLIGHT_ANIMATIONS
