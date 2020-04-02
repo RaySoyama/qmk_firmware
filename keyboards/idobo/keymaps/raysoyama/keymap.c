@@ -5,6 +5,8 @@ enum custom_keycodes {
     RAISE,
     QWERTY = SAFE_RANGE,
     LEAGUE,
+    PrfCmit,
+
 };
 
 enum layer_names {
@@ -30,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
      * | LSHIFT | Z      | X      | C      | V      | B      |        | UP     |        | N      | M      | ,      | .      | /      | Return |
      * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
-     * | Control| Windows| LALT   | LOWER  | SPACE  | SPACE  | LEFT   | DOWN   | RIGHT  | SPACE  | SPACE  |  RAISE |        |        |        |
+     * | Control| Windows| LALT   | LOWER  | SPACE  | SPACE  | LEFT   | DOWN   | RIGHT  | SPACE  | RAISE  | LEFT   | UP     | DOWN   | RIGHT  |
      * '--------------------------------------------------------------------------------------------------------------------------------------'
      */
     [_QWERTY] = LAYOUT_ortho_5x15(
@@ -38,15 +40,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_INS,     KC_HOME,    KC_PGUP,        KC_Y,       KC_U,   KC_I,       KC_O,       KC_P,       KC_BSPC,
     KC_CLCK,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_DEL,     KC_END,     KC_PGDN,        KC_H,       KC_J,   KC_K,       KC_L,       KC_SCLN,    KC_QUOT,
     KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       _______,    KC_UP,      _______,        KC_N,       KC_M,   KC_COMM,    KC_DOT,     KC_SLSH,    KC_ENT,
-    KC_LCTL,    KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     KC_LEFT,    KC_DOWN,    KC_RIGHT,       KC_SPC,     KC_SPC, RAISE,      _______,    _______,    _______),
+    KC_LCTL,    KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     KC_LEFT,    KC_DOWN,    KC_RIGHT,       KC_SPC,     RAISE,  KC_LEFT,    KC_UP,    KC_DOWN,    KC_RIGHT),
 
      /* LEAGUE
      * .--------------------------------------------------------------------------------------------------------------------------------------.
      * | ESC    | 1      | 2      | 3      | 4      | 5      |        |        |        | 6      | 7      | 8      | 9      | 0      | Backspc|
      * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
-     * | TAB    | Q      | W      | E      | R      | T      |        |        |        | Y      | U      | I      | O      | P      | Backspc|
+     * | TAB    | Q      | W      | E      | R      | T      | Y      |        |        | Y      | U      | I      | O      | P      | Backspc|
      * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
-     * | CapsLck| A      | S      | D      | F      | G      |        |        |        | H      | J      | K      | L      | ;      | '      |
+     * | CapsLck| A      | S      | D      | F      | G      | H      |        |        | H      | J      | K      | L      | ;      | '      |
      * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
      * | LSHIFT | Z      | X      | C      | V      | B      |        |        |        | N      | M      | ,      | .      | /      | Return |
      * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
@@ -55,10 +57,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_LEAGUE] = LAYOUT_ortho_5x15(
     KC_ESC,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_NO,    KC_NO,    KC_NO,        KC_6,       KC_7,   KC_8,       KC_9,       KC_0,       KC_BSPC,
-    KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_NO,    KC_NO,    KC_NO,        KC_Y,       KC_U,   KC_I,       KC_O,       KC_P,       KC_BSPC,
-    KC_CLCK,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_NO,    KC_NO,    KC_NO,        KC_H,       KC_J,   KC_K,       KC_L,       KC_SCLN,    KC_QUOT,
+    KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_Y,     KC_NO,    KC_NO,        KC_Y,       KC_U,   KC_I,       KC_O,       KC_P,       KC_BSPC,
+    KC_CLCK,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_H,     KC_NO,    KC_NO,        KC_H,       KC_J,   KC_K,       KC_L,       KC_SCLN,    KC_QUOT,
     KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_NO,    KC_NO,    KC_NO,        KC_N,       KC_M,   KC_COMM,    KC_DOT,     KC_SLSH,    KC_ENT,
-    KC_LCTL,    KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     KC_NO,    KC_NO,    KC_NO,        KC_SPC,     KC_SPC, RAISE,      _______,    _______,    _______),
+    KC_LCTL,    KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     KC_NO,    KC_NO,    KC_NO,        KC_SPC,     RAISE,  _______,    _______,    _______,    _______),
 
     /* LOWER
      * .--------------------------------------------------------------------------------------------------------------------------------------.
@@ -118,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,    _______, _______, _______, RGB_TOG,     BL_TOGG,    _______, _______, _______,  _______, _______, _______, _______, _______, _______,
     _______,    _______, RGB_HUI, RGB_SAI, RGB_VAI,     BL_INC,     _______, _______, _______,  _______, _______, _______, _______, _______, _______,
     _______,    _______, RGB_HUD, RGB_SAD, RGB_VAD,     BL_DEC,     _______, _______, _______,  _______, _______, _______, _______, _______, _______,
-    _______,    _______, _______, _______, _______,     _______,    _______, _______, _______,  _______, _______, _______, _______, _______, _______),
+    PrfCmit,    _______, _______, _______, _______,     _______,    _______, _______, _______,  _______, _______, _______, _______, _______, _______),
 
 };
 
@@ -140,6 +142,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             {
                 set_single_persistent_default_layer(_LEAGUE);
             } 
+            return false;
+        case PrfCmit:
+            if (record->event.pressed)
+            {
+                SEND_STRING("Ray Soyama - ");
+            }
             return false;
     }
     return true;
