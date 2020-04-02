@@ -3,14 +3,20 @@
 enum custom_keycodes {
     LOWER = SAFE_RANGE,
     RAISE,
+    QWERTY = SAFE_RANGE,
+    LEAGUE,
 };
 
 enum layer_names {
     _QWERTY,
+    _LEAGUE,
     _LOWER,
     _RAISE,
     _ADJUST,
 };
+
+#define LOWER MO(_LOWER)
+#define RAISE MO(_RAISE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -33,6 +39,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CLCK,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_DEL,     KC_END,     KC_PGDN,        KC_H,       KC_J,   KC_K,       KC_L,       KC_SCLN,    KC_QUOT,
     KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       _______,    KC_UP,      _______,        KC_N,       KC_M,   KC_COMM,    KC_DOT,     KC_SLSH,    KC_ENT,
     KC_LCTL,    KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     KC_LEFT,    KC_DOWN,    KC_RIGHT,       KC_SPC,     KC_SPC, RAISE,      _______,    _______,    _______),
+
+     /* LEAGUE
+     * .--------------------------------------------------------------------------------------------------------------------------------------.
+     * | ESC    | 1      | 2      | 3      | 4      | 5      |        |        |        | 6      | 7      | 8      | 9      | 0      | Backspc|
+     * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------|
+     * | TAB    | Q      | W      | E      | R      | T      |        |        |        | Y      | U      | I      | O      | P      | Backspc|
+     * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+-----------------+--------|
+     * | CapsLck| A      | S      | D      | F      | G      |        |        |        | H      | J      | K      | L      | ;      | '      |
+     * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------------------------+--------|
+     * | LSHIFT | Z      | X      | C      | V      | B      |        |        |        | N      | M      | ,      | .      | /      | Return |
+     * |--------+--------+--------+--------+--------+-----------------+--------+--------+--------+--------+-----------------+--------+--------|
+     * | Control| Windows| LALT   | LOWER  | SPACE  | SPACE  |        |        |        | SPACE  | SPACE  |  RAISE |        |        |        |
+     * '--------------------------------------------------------------------------------------------------------------------------------------'
+     */
+    [_LEAGUE] = LAYOUT_ortho_5x15(
+    KC_ESC,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_NO,    KC_NO,    KC_NO,        KC_6,       KC_7,   KC_8,       KC_9,       KC_0,       KC_BSPC,
+    KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_NO,    KC_NO,    KC_NO,        KC_Y,       KC_U,   KC_I,       KC_O,       KC_P,       KC_BSPC,
+    KC_CLCK,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_NO,    KC_NO,    KC_NO,        KC_H,       KC_J,   KC_K,       KC_L,       KC_SCLN,    KC_QUOT,
+    KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_NO,    KC_NO,    KC_NO,        KC_N,       KC_M,   KC_COMM,    KC_DOT,     KC_SLSH,    KC_ENT,
+    KC_LCTL,    KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     KC_NO,    KC_NO,    KC_NO,        KC_SPC,     KC_SPC, RAISE,      _______,    _______,    _______),
 
     /* LOWER
      * .--------------------------------------------------------------------------------------------------------------------------------------.
@@ -88,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * '--------------------------------------------------------------------------------------------------------------------------------------'
      */
     [_ADJUST] = LAYOUT_ortho_5x15(
-    RESET,      EEP_RST, _______, _______, _______,     _______,    _______, _______, _______,  RGB_M_P, RGB_M_T, RGB_MOD, _______, _______, _______,
+    RESET,      EEP_RST, _______, _______, _______,     _______,    _______, _______, _______,  RGB_M_P, RGB_M_T, RGB_MOD, _______, QWERTY,  LEAGUE,
     _______,    _______, _______, _______, RGB_TOG,     BL_TOGG,    _______, _______, _______,  _______, _______, _______, _______, _______, _______,
     _______,    _______, RGB_HUI, RGB_SAI, RGB_VAI,     BL_INC,     _______, _______, _______,  _______, _______, _______, _______, _______, _______,
     _______,    _______, RGB_HUD, RGB_SAD, RGB_VAD,     BL_DEC,     _______, _______, _______,  _______, _______, _______, _______, _______, _______,
@@ -96,25 +122,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LOWER:
-            if (record->event.pressed) {
-                layer_on(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
+        case QWERTY:
+            if (record->event.pressed) 
+            {
+                set_single_persistent_default_layer(_QWERTY);
             }
-            return false;
-        case RAISE:
-            if (record->event.pressed) {
-                layer_on(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
+      
+            return false;   
+        case LEAGUE:
+            if (record->event.pressed) 
+            {
+                set_single_persistent_default_layer(_LEAGUE);
+            } 
             return false;
     }
     return true;
