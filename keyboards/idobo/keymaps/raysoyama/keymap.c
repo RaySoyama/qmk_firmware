@@ -5,8 +5,7 @@ enum custom_keycodes {
     RAISE,
     QWERTY = SAFE_RANGE,
     LEAGUE,
-    PrfCmit,
-
+    ValorantPasta
 };
 
 enum layer_names {
@@ -120,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,    _______, _______, _______, RGB_TOG,     BL_TOGG,    _______, _______, _______,  _______, _______, _______, _______, _______, _______,
     _______,    _______, RGB_HUI, RGB_SAI, RGB_VAI,     BL_INC,     _______, _______, _______,  _______, _______, _______, _______, _______, _______,
     _______,    _______, RGB_HUD, RGB_SAD, RGB_VAD,     BL_DEC,     _______, _______, _______,  _______, _______, _______, _______, _______, _______,
-    PrfCmit,    _______, _______, _______, _______,     _______,    _______, _______, _______,  _______, _______, _______, _______, _______, _______),
+    ValorantPasta,    _______, _______, _______, _______,     _______,    _______, _______, _______,  _______, _______, _______, _______, _______, _______),
 
 };
 
@@ -143,10 +142,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_LEAGUE);
             } 
             return false;
-        case PrfCmit:
+        case ValorantPasta:
             if (record->event.pressed)
             {
-                SEND_STRING("Ray Soyama - ");
+                SEND_STRING("To be clear, in Project A, shooting matters. You don’t kill with abilities. Abilities create tactical opportunities to take the right shot. Characters have abilities that augment their gunplay, instead of fighting directly with their abilities.");
             }
             return false;
     }
