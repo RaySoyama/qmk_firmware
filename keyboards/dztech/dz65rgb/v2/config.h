@@ -29,8 +29,10 @@
 #define DIODE_DIRECTION COL2ROW
 
 /* disable these deprecated features by default */
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
+#ifndef LINK_TIME_OPTIMIZATION_ENABLE
+#    define NO_ACTION_MACRO
+#    define NO_ACTION_FUNCTION
+#endif
 
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_MATRIX_LED_PROCESS_LIMIT 4

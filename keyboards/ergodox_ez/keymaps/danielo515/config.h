@@ -25,7 +25,9 @@
 #    define NO_PRINT
 #endif
 
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
+#ifndef LINK_TIME_OPTIMIZATION_ENABLE
+#    define NO_ACTION_MACRO
+#    define NO_ACTION_FUNCTION
+#endif
 
 #undef RGBLIGHT_ANIMATIONS
