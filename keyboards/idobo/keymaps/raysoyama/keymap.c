@@ -145,7 +145,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case ValorantPasta:
             if (record->event.pressed)
             {
-                SEND_STRING("To be clear, in Project A, shooting matters. You don’t kill with abilities. Abilities create tactical opportunities to take the right shot. Characters have abilities that augment their gunplay, instead of fighting directly with their abilities.");
+                SEND_STRING("To be clear, in Valorant, shooting matters. You dont kill with abilities. Abilities create tactical opportunities to take the right shot. Characters have abilities that augment their gunplay, instead of fighting directly with their abilities.");
             }
             return false;
     }
