@@ -116,55 +116,23 @@
 
 #define TERMINAL_SOUND E__NOTE(_C5)
 
-
-
-//Rays Songs
+// Rays Songs
 
 #define GIT_Song_ADD E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), S__NOTE(_REST), ED_NOTE(_A7),
 #define GIT_Song_COMMIT E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), S__NOTE(_REST), ED_NOTE(_B7),
 #define GIT_Song_PUSH E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), S__NOTE(_REST), ED_NOTE(_C8),
 
-#define ISABELLAS_LULLABY W__NOTE(_BF4), B__NOTE(_D5), W__NOTE(_EF5), B__NOTE(_F5), W__NOTE(_BF5), B__NOTE(_AF5), W__NOTE(_GF5), BD_NOTE(_F5), B__NOTE(_CS5), \
-  W__NOTE(_F5), B__NOTE(_C5), W__NOTE(_EF5), BD_NOTE(_BF4), W__NOTE(_AF4), W__NOTE(_BF4), W__NOTE(_F5), W__NOTE(_GF5), \
-  WD_NOTE(_AF5), H__NOTE(_FS5), W__NOTE(_F5), B__NOTE(_EF5), W__NOTE(_C6), B__NOTE(_AF5), W__NOTE(_F5), WD_NOTE(_AF5), \
-  H__NOTE(_BF5), W__NOTE(_F5), WD_NOTE(_AF5), H__NOTE(_BF5), W__NOTE(_F5), W__NOTE(_EF5), W__NOTE(_BF4), W__NOTE(_AF5), \
-  WD_NOTE(_F5), H__NOTE(_F5), H__NOTE(_BF5), H__NOTE(_C6), WD_NOTE(_CS6), H__NOTE(_C6), W__NOTE(_BF5), W__NOTE(_AF5), \
-  W__NOTE(_F5), W__NOTE(_EF5), WD_NOTE(_EF5), H__NOTE(_DF5), W__NOTE(_AF5), BD_NOTE(_F5), WD_NOTE(_BF4), H__NOTE(_C5), \
-  W__NOTE(_CS5), W__NOTE(_EF5), W__NOTE(_AF4), W__NOTE(_EF5), WD_NOTE(_GF5), H__NOTE(_F5), W__NOTE(_EF5), WD_NOTE(_F5), \
-  H__NOTE(_F5), H__NOTE(_BF5), H__NOTE(_C6), WD_NOTE(_CS6), H__NOTE(_C6), W__NOTE(_CS6), W__NOTE(_EF6), W__NOTE(_AF5), \
-  W__NOTE(_EF6), WD_NOTE(_GF6), H__NOTE(_F6), W__NOTE(_EF6), B__NOTE(_DF6), H__NOTE(_GF6), H__NOTE(_AF6), BD_NOTE(_DF6), \
-  B__NOTE(_BF5), W__NOTE(_F6), BD_NOTE(_C6), W__NOTE(_AF5), WD_NOTE(_EF6), H__NOTE(_DF6), W__NOTE(_C6), B__NOTE(_BF5),
+#define ISABELLAS_LULLABY                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \
+    W__NOTE(_BF4), B__NOTE(_D5), W__NOTE(_EF5), B__NOTE(_F5), W__NOTE(_BF5), B__NOTE(_AF5), W__NOTE(_GF5), BD_NOTE(_F5), B__NOTE(_CS5), W__NOTE(_F5), B__NOTE(_C5), W__NOTE(_EF5), BD_NOTE(_BF4), W__NOTE(_AF4), W__NOTE(_BF4), W__NOTE(_F5), W__NOTE(_GF5), WD_NOTE(_AF5), H__NOTE(_FS5), W__NOTE(_F5), B__NOTE(_EF5), W__NOTE(_C6), B__NOTE(_AF5), W__NOTE(_F5), WD_NOTE(_AF5), H__NOTE(_BF5), W__NOTE(_F5), WD_NOTE(_AF5), H__NOTE(_BF5), W__NOTE(_F5), W__NOTE(_EF5), W__NOTE(_BF4), W__NOTE(_AF5), WD_NOTE(_F5), H__NOTE(_F5), H__NOTE(_BF5), H__NOTE(_C6), WD_NOTE(_CS6), H__NOTE(_C6), W__NOTE(_BF5), W__NOTE(_AF5), W__NOTE(_F5), W__NOTE(_EF5), WD_NOTE(_EF5), H__NOTE(_DF5), W__NOTE(_AF5), BD_NOTE(_F5), WD_NOTE(_BF4), H__NOTE(_C5), W__NOTE(_CS5), W__NOTE(_EF5), W__NOTE(_AF4), W__NOTE(_EF5), WD_NOTE(_GF5), H__NOTE(_F5), W__NOTE(_EF5), WD_NOTE(_F5), H__NOTE(_F5), H__NOTE(_BF5), H__NOTE(_C6), WD_NOTE(_CS6), H__NOTE(_C6), W__NOTE(_CS6), W__NOTE(_EF6), W__NOTE(_AF5), W__NOTE(_EF6), WD_NOTE(_GF6), \
+        H__NOTE(_F6), W__NOTE(_EF6), B__NOTE(_DF6), H__NOTE(_GF6), H__NOTE(_AF6), BD_NOTE(_DF6), B__NOTE(_BF5), W__NOTE(_F6), BD_NOTE(_C6), W__NOTE(_AF5), WD_NOTE(_EF6), H__NOTE(_DF6), W__NOTE(_C6), B__NOTE(_BF5),
 
+#define RENAI_CIRCULATION                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \
+    Q__NOTE(_E6), Q__NOTE(_B5), HD_NOTE(_CS6), HD_NOTE(_CS6), H__NOTE(_B5), HD_NOTE(_E6), HD_NOTE(_E6), Q__NOTE(_E6), Q__NOTE(_B5), HD_NOTE(_CS6), HD_NOTE(_CS6), H__NOTE(_B5), HD_NOTE(_E6), HD_NOTE(_GS6), Q__NOTE(_E6), Q__NOTE(_B5), HD_NOTE(_CS6), H__NOTE(_CS6), Q__NOTE(_CS6), H__NOTE(_B5), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_FS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_CS6), WD_NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_FS6), H__NOTE(_G6), HD_NOTE(_GS6), HD_NOTE(_E6), Q__NOTE(_B5), Q__NOTE(_CS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_FS6), H__NOTE(_G6), HD_NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_CS6), H__NOTE(_E6), Q__NOTE(_CS6), HD_NOTE(_E6), H__NOTE(_CS6), H__NOTE(_E6), Q__NOTE(_CS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_A6), H__NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_FS6), WD_NOTE(_E6), H__NOTE(_GS6), H__NOTE(_A6), H__NOTE(_GS6), H__NOTE(_A6), W__NOTE(_B6), H__NOTE(_GS6), H__NOTE(_A6), H__NOTE(_GS6), H__NOTE(_A6), W__NOTE(_B6), H__NOTE(_B6), H__NOTE(_A6), \
+        H__NOTE(_GS6), H__NOTE(_A6), Q__NOTE(_GS6), H__NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_CS6), Q__NOTE(_GS6), H__NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_CS6), Q__NOTE(_E6), H__NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_FS6), WD_NOTE(_E6), W__NOTE(_B6), W__NOTE(_GS6), W__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_E6), H__NOTE(_FS6), B__NOTE(_GS6), H__NOTE(_GS6), W__NOTE(_CS7), W__NOTE(_GS6), W__NOTE(_E6), H__NOTE(_GS6), H__NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_FS6), WD_NOTE(_E6),
 
-#define RENAI_CIRCULATION Q__NOTE(_E6), Q__NOTE(_B5), HD_NOTE(_CS6), HD_NOTE(_CS6), H__NOTE(_B5), HD_NOTE(_E6), HD_NOTE(_E6), Q__NOTE(_E6), Q__NOTE(_B5), \
-  HD_NOTE(_CS6), HD_NOTE(_CS6), H__NOTE(_B5), HD_NOTE(_E6), HD_NOTE(_GS6), Q__NOTE(_E6), Q__NOTE(_B5), HD_NOTE(_CS6), \
-  H__NOTE(_CS6), Q__NOTE(_CS6), H__NOTE(_B5), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_FS6), HD_NOTE(_E6), \
-  H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_CS6), WD_NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_FS6), H__NOTE(_G6), \
-  HD_NOTE(_GS6), HD_NOTE(_E6), Q__NOTE(_B5), Q__NOTE(_CS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_FS6), H__NOTE(_G6), \
-  HD_NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_CS6), H__NOTE(_E6), Q__NOTE(_CS6), HD_NOTE(_E6), H__NOTE(_CS6), H__NOTE(_E6), \
-  Q__NOTE(_CS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_A6), H__NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_FS6), WD_NOTE(_E6), \
-  H__NOTE(_GS6), H__NOTE(_A6), H__NOTE(_GS6), H__NOTE(_A6), W__NOTE(_B6), H__NOTE(_GS6), H__NOTE(_A6), H__NOTE(_GS6), \
-  H__NOTE(_A6), W__NOTE(_B6), H__NOTE(_B6), H__NOTE(_A6), H__NOTE(_GS6), H__NOTE(_A6), Q__NOTE(_GS6), H__NOTE(_E6), \
-  H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_CS6), Q__NOTE(_GS6), H__NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_CS6), \
-  Q__NOTE(_E6), H__NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), H__NOTE(_FS6), WD_NOTE(_E6), W__NOTE(_B6), W__NOTE(_GS6), \
-  W__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_E6), H__NOTE(_FS6), B__NOTE(_GS6), H__NOTE(_GS6), \
-  W__NOTE(_CS7), W__NOTE(_GS6), W__NOTE(_E6), H__NOTE(_GS6), H__NOTE(_GS6), HD_NOTE(_E6), H__NOTE(_E6), Q__NOTE(_E6), \
-  H__NOTE(_FS6), WD_NOTE(_E6),
-
-#define PLATINUM_DISCO 	H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_DS6), H__NOTE(_FS6), W__NOTE(_GS6), H__NOTE(_DS6), H__NOTE(_FS6), \
-H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS6), H__NOTE(_FS6), WD_NOTE(_FS6), H__NOTE(_CS6), W__NOTE(_DS6), H__NOTE(_FS6), \
-H__NOTE(_AS6), W__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), Q__NOTE(_AS6), Q__NOTE(_CS7), Q__NOTE(_GS6), Q__NOTE(_AS6), \
-Q__NOTE(_FS6), Q__NOTE(_GS6), Q__NOTE(_DS6), Q__NOTE(_FS6), Q__NOTE(_CS6), Q__NOTE(_DS6), Q__NOTE(_AS5), Q__NOTE(_CS6), \
-H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_DS6), H__NOTE(_FS6), W__NOTE(_GS6), H__NOTE(_DS6), \
-H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS7), H__NOTE(_GS6), WD_NOTE(_FS6), H__NOTE(_CS6), W__NOTE(_DS6), \
-H__NOTE(_FS6), H__NOTE(_AS6), WD_NOTE(_GS6), H__NOTE(_FS6), Q__NOTE(_FS6), Q__NOTE(_GS5), Q__NOTE(_AS5), Q__NOTE(_CS6), \
-Q__NOTE(_FS6), Q__NOTE(_GS6), Q__NOTE(_AS6), Q__NOTE(_CS7), WD_NOTE(_FS7), H__NOTE(_CS6), WD_NOTE(_DS6), H__NOTE(_CS6), \
-WD_NOTE(_DS6), H__NOTE(_CS6), H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), WD_NOTE(_GS6), H__NOTE(_FS6), \
-WD_NOTE(_GS6), H__NOTE(_FS6), WD_NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_DS6), H__NOTE(_FS6), \
-WD_NOTE(_FS6), H__NOTE(_CS6), WD_NOTE(_DS6), H__NOTE(_CS6), WD_NOTE(_DS6), H__NOTE(_CS6), H__NOTE(_DS6), H__NOTE(_FS6), \
-H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS7), H__NOTE(_AS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_DS6), W__NOTE(_FS6), \
-H__NOTE(_CS6), H__NOTE(_DS6), W__NOTE(_FS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_FS6), \
-B__NOTE(_FS6),
+#define PLATINUM_DISCO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \
+    H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_DS6), H__NOTE(_FS6), W__NOTE(_GS6), H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS6), H__NOTE(_FS6), WD_NOTE(_FS6), H__NOTE(_CS6), W__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_AS6), W__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), Q__NOTE(_AS6), Q__NOTE(_CS7), Q__NOTE(_GS6), Q__NOTE(_AS6), Q__NOTE(_FS6), Q__NOTE(_GS6), Q__NOTE(_DS6), Q__NOTE(_FS6), Q__NOTE(_CS6), Q__NOTE(_DS6), Q__NOTE(_AS5), Q__NOTE(_CS6), H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_DS6), H__NOTE(_FS6), W__NOTE(_GS6), H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS7), H__NOTE(_GS6), WD_NOTE(_FS6), H__NOTE(_CS6), W__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_AS6), WD_NOTE(_GS6), H__NOTE(_FS6), Q__NOTE(_FS6), Q__NOTE(_GS5), Q__NOTE(_AS5), Q__NOTE(_CS6), Q__NOTE(_FS6), Q__NOTE(_GS6), Q__NOTE(_AS6), Q__NOTE(_CS7), WD_NOTE(_FS7), H__NOTE(_CS6), WD_NOTE(_DS6), H__NOTE(_CS6), WD_NOTE(_DS6), \
+        H__NOTE(_CS6), H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), WD_NOTE(_GS6), H__NOTE(_FS6), WD_NOTE(_GS6), H__NOTE(_FS6), WD_NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_DS6), H__NOTE(_FS6), WD_NOTE(_FS6), H__NOTE(_CS6), WD_NOTE(_DS6), H__NOTE(_CS6), WD_NOTE(_DS6), H__NOTE(_CS6), H__NOTE(_DS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_AS6), H__NOTE(_CS7), H__NOTE(_AS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_DS6), W__NOTE(_FS6), H__NOTE(_CS6), H__NOTE(_DS6), W__NOTE(_FS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_FS6), H__NOTE(_GS6), H__NOTE(_FS6), B__NOTE(_FS6),
 
 #define CELESTE_FIRSTSTEPS
 
@@ -210,7 +178,7 @@ B__NOTE(_FS6),
   H__NOTE(_EF5), H__NOTE(_F5), W__NOTE(_D5), W__NOTE(_BF5), W__NOTE(_G5), W__NOTE(_D5), W__NOTE(_EF5), QD_NOTE(_C5), \
   QD_NOTE(_D5), Q__NOTE(_EF5), H__NOTE(_G5), H__NOTE(_F5), H__NOTE(_EF5), H__NOTE(_F5), B__NOTE(_D5), B__NOTE(_BF4), \
   B__NOTE(_C5), H__NOTE(_C5), H__NOTE(_D5), H__NOTE(_EF5), H__NOTE(_F5), WD_NOTE(_G5), H__NOTE(_C5), W__NOTE(_AF5), \
-  WD_NOTE(_G5), 
+  WD_NOTE(_G5),
 
 #define VAGUE_HOPE_COLD_RAIN \
   HD_NOTE(_D6), HD_NOTE(_E6), HD_NOTE(_CS6), HD_NOTE(_D6), HD_NOTE(_B5), Q__NOTE(_B5), Q__NOTE(_CS6), Q__NOTE(_D6), WD_NOTE(_A6), \
@@ -225,7 +193,7 @@ B__NOTE(_FS6),
   W__NOTE(_FS5), HD_NOTE(_FS6), HD_NOTE(_B5), H__NOTE(_D6), H__NOTE(_CS6), H__NOTE(_E6), HD_NOTE(_A6), HD_NOTE(_E6), \
   W__NOTE(_D6), Q__NOTE(_CS6), Q__NOTE(_D6), HD_NOTE(_E6), HD_NOTE(_FS6), WD_NOTE(_B6), HD_NOTE(_E6), HD_NOTE(_FS6), \
   HD_NOTE(_B5), Q__NOTE(_B5), Q__NOTE(_B5), Q__NOTE(_CS6), H__NOTE(_D6), H__NOTE(_E6), H__NOTE(_FS6), HD_NOTE(_E6), \
-  HD_NOTE(_CS6), H__NOTE(_FS6), H__NOTE(_A6), H__NOTE(_B6), W__NOTE(_A6), H__NOTE(_FS6), BD_NOTE(_B6), 
+  HD_NOTE(_CS6), H__NOTE(_FS6), H__NOTE(_A6), H__NOTE(_B6), W__NOTE(_A6), H__NOTE(_FS6), BD_NOTE(_B6),
 
 #define WEIGHT_OF_THE_WORLD \
   H__NOTE(_B5), Q__NOTE(_C6), Q__NOTE(_C6), Q__NOTE(_B5), H__NOTE(_C6), H__NOTE(_G6), WD_NOTE(_G6), H__NOTE(_B5), Q__NOTE(_C6), \
@@ -237,7 +205,7 @@ B__NOTE(_FS6),
   Q__NOTE(_F6), H__NOTE(_E6), H__NOTE(_F6), HD_NOTE(_E6), H__NOTE(_D6), H__NOTE(_C6), H__NOTE(_D6), BD_NOTE(_D6), \
   Q__NOTE(_E6), Q__NOTE(_D6), Q__NOTE(_C6), Q__NOTE(_B5), H__NOTE(_C6), Q__NOTE(_C6), H__NOTE(_C6), HD_NOTE(_C6), \
   H__NOTE(_B5), H__NOTE(_C6), H__NOTE(_E6), H__NOTE(_G6), WD_NOTE(_G6), Q__NOTE(_C6), B__NOTE(_C6), H__NOTE(_B6), \
-  Q__NOTE(_C7), BD_NOTE(_C7), 
+  Q__NOTE(_C7), BD_NOTE(_C7),
 
 */
 
@@ -277,7 +245,6 @@ B__NOTE(_FS6),
  *   proof of permission to use them, or public domain status.
  */
 
-<<<<<<< HEAD
 #define CLOSE_ENCOUNTERS_5_NOTE
 #define DOE_A_DEER
 #define IN_LIKE_FLINT
@@ -309,7 +276,6 @@ B__NOTE(_FS6),
 #define KAINE_SALVATION
 #define TERRAS_THEME
 #define LP_NUMB
-=======
 #ifndef CLOSE_ENCOUNTERS_5_NOTE
 #    define CLOSE_ENCOUNTERS_5_NOTE
 #endif
@@ -433,4 +399,3 @@ B__NOTE(_FS6),
 #ifndef LP_NUMB
 #    define LP_NUMB
 #endif
->>>>>>> 8ef82c466e73e555fd74107d4c57e678d7152ecc
