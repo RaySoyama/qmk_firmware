@@ -16,19 +16,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case UNO:
             if (record->event.pressed) {
                 pressTimer = timer_read();
+                SEND_STRING(" ");
             } else {
                 uint16_t timeElapsed = timer_elapsed(pressTimer);
 
-                if (timeElapsed < 150) {
-                    SEND_STRING("Why the fuck did I buy this");
-                } else if (timeElapsed < 1000) {
-                    SEND_STRING("I mean it's kinda cool tho");
-                } else if (timeElapsed < 2000) {
-                    SEND_STRING("piss n shit");
-                } else {
+                if (timeElapsed > 5000) {
                     reset_keyboard();
                 }
             }
+
             break;
     }
     return false;
